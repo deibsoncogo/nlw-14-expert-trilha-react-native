@@ -1,5 +1,3 @@
-/* eslint-disable global-require */
-
 const MENU = [
   {
     title: "Lanche do dia",

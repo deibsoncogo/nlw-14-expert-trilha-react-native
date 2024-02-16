@@ -1,5 +1,8 @@
 {
   "rules": {
+    "global-require": "off",
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off",
     "indent": "off",
     "camelcase": "off",
     "no-console": "off",
