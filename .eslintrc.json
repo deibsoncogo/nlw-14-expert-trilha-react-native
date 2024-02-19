@@ -1,8 +1,13 @@
 {
   "rules": {
     "global-require": "off",
+    "arrow-body-style": "off",
+    "react/jsx-no-bind": "off",
+    "react/display-name": "off",
+    "function-paren-newline": "off",
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
+    "react/jsx-one-expression-per-line": "off",
     "indent": "off",
     "camelcase": "off",
     "no-console": "off",
