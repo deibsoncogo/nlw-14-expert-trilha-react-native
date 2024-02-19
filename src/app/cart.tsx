@@ -32,7 +32,7 @@ export default function Cart() {
 
   function handleOrder() {
     if (address.trim().length === 0) {
-      return Alert.alert("Pedido", "Informe os dados da emprega")
+      return Alert.alert("Pedido", "Informe o endereço da emprega")
     }
 
     const products = cartStore.products
@@ -53,57 +53,62 @@ export default function Cart() {
 
       <KeyboardAwareScrollView extraHeight={100} showsVerticalScrollIndicator={false}>
         <ScrollView>
-          <View className="p-5 flex-1">
+          <View className="py-5 flex-1 border-b border-slate-700 mx-5">
             {cartStore.products.length > 0 ? (
-              <View className="border-b border-slate-700">
-                {cartStore.products.map((product) => (
-                  <Product
-                    key={product.id}
-                    data={product}
-                    onPress={() => handleProductRemove(product)}
-                  />
-                ))}
-              </View>
+              <>
+                <View className="border-b border-slate-700 pb-2">
+                  {cartStore.products.map((product) => (
+                    <Product
+                      key={product.id}
+                      data={product}
+                      onPress={() => handleProductRemove(product)}
+                    />
+                  ))}
+                </View>
+
+                <View className="flex-row gap-2 items-center mt-2 mb-4">
+                  <Text className="text-white text-xl font-subtitle">
+                    Total:
+                  </Text>
+
+                  <Text className="text-lime-400 text-2xl font-heading">
+                    {total}
+                  </Text>
+                </View>
+
+                <Input
+                  onChangeText={setAddress}
+                  blurOnSubmit
+                  returnKeyType="next"
+                  onSubmitEditing={handleOrder}
+                  placeholder="Informe o endereço de entrega com rua, número, bairro e complemento"
+                />
+              </>
             ) : (
               <Text className="font-body text-slate-400 text-center my-8">
                 Seu carrinho está vazio
               </Text>
             )}
+          </View>
 
-            <View className="flex-row gap-2 items-center mt-5 mb-4">
-              <Text className="text-white text-xl font-subtitle">
-                Total:
-              </Text>
+          <View className="p-5 gap-5">
+            {cartStore.products.length > 0 && (
+              <Button onPress={handleOrder}>
+                <Button.Text>
+                  Enviar pedido
+                </Button.Text>
 
-              <Text className="text-lime-400 text-2xl font-heading">
-                {total}
-              </Text>
-            </View>
+                <Button.Icon>
+                  <Feather name="arrow-right-circle" size={20} />
+                </Button.Icon>
+              </Button>
+            )}
 
-            <Input
-              onChangeText={setAddress}
-              blurOnSubmit
-              returnKeyType="next"
-              onSubmitEditing={handleOrder}
-              placeholder="Informe o endereço de entrega com rua, bairro, CEP, número e complemento"
-            />
+            <LinkButton title="Voltar ao cardápio" href="/" />
           </View>
         </ScrollView>
       </KeyboardAwareScrollView>
 
-      <View className="p-5 gap-5">
-        <Button onPress={handleOrder}>
-          <Button.Text>
-            Enviar pedido
-          </Button.Text>
-
-          <Button.Icon>
-            <Feather name="arrow-right-circle" size={20} />
-          </Button.Icon>
-        </Button>
-
-        <LinkButton title="Voltar ao cardápio" href="/" />
-      </View>
     </View>
   )
 }
