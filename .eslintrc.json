@@ -3,6 +3,7 @@
     "global-require": "off",
     "arrow-body-style": "off",
     "react/jsx-no-bind": "off",
+    "consistent-return": "off",
     "react/display-name": "off",
     "function-paren-newline": "off",
     "react/require-default-props": "off",
