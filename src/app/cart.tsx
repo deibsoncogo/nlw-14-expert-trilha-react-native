@@ -17,7 +17,7 @@ export default function Cart() {
   const cartStore = useCartStore()
   const navigation = useNavigation()
 
-  const PHONE_NUMBER = ""
+  const phoneNumber = process.env.EXPO_PUBLIC_PHONE_NUMBER_WHATS_APP
 
   const total = formatCurrency(cartStore.products.reduce((acc, product) => {
     return acc + product.price * product.quantity
@@ -41,7 +41,7 @@ export default function Cart() {
 
     const message = `NOVO PEDIDO\n\nEntregar em: ${address}\n${products}\n\n\n*Valor total: ${total}*`
 
-    Linking.openURL(`http://api.whatsapp.com/send?phone=${PHONE_NUMBER}&text=${message}`)
+    Linking.openURL(`http://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`)
 
     cartStore.clear()
     navigation.goBack()
