@@ -14,7 +14,7 @@ export function Header({ title, cartQuantityItems = 0 }: HeaderProps) {
       <View className="flex-1">
         <Image source={require("../assets/logo.png")} className="h-6 w-32" />
 
-        <Text className="text-white text-xl font-heading mt-2">
+        <Text numberOfLines={1} className="text-white text-xl font-heading mt-2">
           {title}
         </Text>
       </View>

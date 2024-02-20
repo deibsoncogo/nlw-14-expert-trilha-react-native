@@ -60,7 +60,10 @@ export default function Home() {
           </Link>
         )}
         renderSectionHeader={({ section: { title } }) => (
-          <Text className="text-xl text-white font-heading mt-8 mb-3">
+          <Text
+            numberOfLines={1}
+            className="text-xl text-white font-heading mt-8 mb-3"
+          >
             {title}
           </Text>
         )}
